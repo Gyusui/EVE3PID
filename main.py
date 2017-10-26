@@ -2,17 +2,17 @@ import rpyc
 import math
 import time
 
-K_EVE_HOST = '192.168.0.1'
+K_EVE_HOST = '169.254.182.90'
 K_EVE_OBJECT = 'ev3dev.ev3'
 K_EVE_RIGHT_MOTOR = 'outD'
 K_EVE_LEFT_MOTOR = 'outA'
-K_WHEEL_RADIUS = 0.25  # meters
-K_BASE_HALF = 0.06  # meters
-K_DELTA_TIME = 0.1  # seconds
-K_TARGET_ANGLE = 0  # radians
-K_TARGET_VELOCITY = 10  # meters per seconds
-K_TO_RMP = 9.5493  # rad per sec to rpm constant
-K_RPM_MAX = 960  # max rpm value
+K_WHEEL_RADIUS = 0.25
+K_BASE_HALF = 0.06
+K_DELTA_TIME = 0.1
+K_TARGET_ANGLE = 0
+K_TARGET_VELOCITY = 10
+K_TO_RMP = 9.5493
+K_RPM_MAX = 960
 K_p = 5
 K_i = 0
 K_d = 0.2
