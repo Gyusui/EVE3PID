@@ -29,6 +29,9 @@ Finally, to drive the robot open command line, switch to the project directory a
 
 ```python run_drive_robot.py --config=resources/robot_config.yaml --pid=resources/pid_config.yaml --program=resources/gyro_program.csv```
 
+To force robot to stop from the project directory execute:
+```python run_stop_robot.py --config=resources/robot_config.yaml```
+
 During the experiments it was noticed that in rare cases gyro sensor starts returning growing angle change when robot even doesn't move. It seems that it happens because of internal overflow. To fix the problem just unplug and plug again gyro cable.
 
 If robot's driving accuracy and smooth is not enough there is an opportunity to set PID controller coefficients in `resources/pid_config.yaml`.
