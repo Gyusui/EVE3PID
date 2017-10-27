@@ -1,5 +1,5 @@
 from unittest import TestCase
-from core.configs import LegoRobotConfig, PIDControllerConfig
+from core.configs import WheeledRobotConfig, PIDControllerConfig
 
 
 class TestLegoRobotConfig(TestCase):
@@ -22,7 +22,7 @@ class TestLegoRobotConfig(TestCase):
                        'velocity': self.K_VELOCITY,
                        'wheelRpmMax': self.K_RPM_MAX}
 
-        config = LegoRobotConfig(config_dict)
+        config = WheeledRobotConfig(config_dict)
 
         self.assertEqual(config.address, self.K_HOST)
         self.assertEqual(config.robot_module, self.K_MODULE)
@@ -31,7 +31,7 @@ class TestLegoRobotConfig(TestCase):
         self.assertAlmostEquals(config.wheel_radius, self.K_WHEEL_RADIUS, 1e-6)
         self.assertAlmostEquals(config.wheel_base_half, self.K_WHEEL_BASE_HALF, 1e-6)
         self.assertAlmostEquals(config.velocity, self.K_VELOCITY, 1e-6)
-        self.assertEquals(config.wheel_rpm_max, self.K_RPM_MAX)
+        self.assertAlmostEquals(config.wheel_rpm_max, self.K_RPM_MAX, 1e-6)
 
 
 class TestPIDControllerConfig(TestCase):

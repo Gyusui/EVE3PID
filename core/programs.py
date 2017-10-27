@@ -10,7 +10,7 @@ class GyroProgramExecutor:
         self._program = gyro_program
         self._program_counter = 0
 
-    def command_time(self) -> int:
+    def command_time(self) -> float:
         command = self._program[self._program_counter]
         return command[0]
 

@@ -1,7 +1,7 @@
 from typing import Dict, AnyStr
 
 
-class LegoRobotConfig:
+class WheeledRobotConfig:
     def __init__(self, key_value: Dict):
         self._address = key_value["address"]
         self._robot_module = key_value["module"]
