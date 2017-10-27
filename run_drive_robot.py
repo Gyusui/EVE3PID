@@ -66,8 +66,8 @@ def main(argv):
     if logger_path is not None:
         logger = TimeValueLogger(logger_path)
 
-    controller = WheeledGyroRobotController(config_reader.result, pid_reader.result)
-    controller.run(program_reader.result, duration, logger=logger)
+    controller = WheeledGyroRobotController(config_reader.result)
+    controller.run_closed_loop(program_reader.result, pid_reader.result, duration, logger=logger)
 
     if logger is not None:
         logger.complete()
