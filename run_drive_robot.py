@@ -64,10 +64,10 @@ def main(argv):
 def usage():
     usage_str = """Starts driving robot based on config according to program for given amount of time\n\n"""
     usage_str = usage_str + """Parameters:\n\n"""
-    usage_str = usage_str + "--config\t Path to the robot's yaml configuration file\n"
-    usage_str = usage_str + "--pid\t Path to the pid controller yaml configuration file\n"
-    usage_str = usage_str + "--program\t Path to csv [time, angle] file\n"
-    usage_str = usage_str + "--duration\t Running time. \
+    usage_str = usage_str + "--"+K_CONFIG_PARAM+"\t Path to the robot's yaml configuration file\n"
+    usage_str = usage_str + "--"+K_PID_PARAM+"pid\t Path to the pid controller yaml configuration file\n"
+    usage_str = usage_str + "--"+K_PROGRAM_PARAM+"program\t Path to csv [time, angle] file\n"
+    usage_str = usage_str + "--"+K_DURATION_PARAM+"duration\t Running time. \
     By default last value from the program used\n"
     return usage_str
 
