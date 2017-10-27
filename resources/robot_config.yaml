@@ -1,5 +1,5 @@
 robot:
-  address: '169.254.182.90'
+  address: '169.254.126.82'
   module: 'ev3dev.ev3'
   leftWheelPort: 'outA'
   rightWheelPort: 'outD'

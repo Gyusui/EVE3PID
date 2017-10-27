@@ -15,8 +15,8 @@ class WheeledRobotController:
         self._setup()
 
     def _setup(self):
-        conn = rpyc.classic.connect(self._config.address)
-        self._robot = conn.modules[self._config.robot_module]
+        self._conn = rpyc.classic.connect(self._config.address)
+        self._robot = self._conn.modules[self._config.robot_module]
 
     def drive(self, w: float):
         wl = K_TO_RMP * (self._config.velocity - w * self._config.wheel_base_half) / self._config.wheel_radius
@@ -55,7 +55,7 @@ class WheeledGyroRobotController(WheeledRobotController):
     def run_closed_loop(self, executor: GyroProgramExecutor, pid_config: PIDControllerConfig,
                         duration: float, delta=0.1, logger=None):
         pid = PIDController(pid_config.kp, pid_config.ki, pid_config.kd)
-        init_angle = self._gyro.angle()
+        init_angle = self._gyro.angle
 
         curr_time = 0.0
         target_angle = 0.0
@@ -64,7 +64,7 @@ class WheeledGyroRobotController(WheeledRobotController):
                 executor.next_command()
 
             target_angle += executor.command_value()
-            curr_angle = self._gyro.angle() - init_angle
+            curr_angle = self._gyro.angle - init_angle
 
             if logger is not None:
                 logger.log(curr_time, curr_angle)
