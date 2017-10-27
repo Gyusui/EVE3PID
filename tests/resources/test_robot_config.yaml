@@ -1,0 +1,9 @@
+robot:
+  address: '169.254.182.90'
+  module: 'ev3dev.ev3'
+  leftWheelPort: 'outA'
+  rightWheelPort: 'outD'
+  wheelRadius: 0.25
+  wheelBaseHalf: 0.06
+  velocity: 10.0
+  wheelRpmMax: 960
