@@ -2,7 +2,7 @@ import rpyc
 import math
 import time
 
-K_EVE_HOST = '169.254.182.90'
+K_EVE_HOST = '169.254.64.192'
 K_EVE_OBJECT = 'ev3dev.ev3'
 K_EVE_RIGHT_MOTOR = 'outD'
 K_EVE_LEFT_MOTOR = 'outA'
@@ -21,8 +21,9 @@ K_d = 0.2
 def main():
     conn = rpyc.classic.connect(K_EVE_HOST)  # host name or IP address of the EV3
     ev3 = conn.modules[K_EVE_OBJECT]  # import ev3dev.ev3 remotely
-    stop(ev3)
-    follow(ev3, K_TARGET_ANGLE)
+    #stop(ev3)
+    #follow(ev3, K_TARGET_ANGLE)
+    test_gyro(ev3)
     
 
 def follow(ev3, angle):
@@ -79,7 +80,7 @@ def test_gyro(ev3):
     gyro = ev3.GyroSensor()
     angle = gyro.angle
     while True:
-        print(gyro.angle - angle)
+        print(gyro.angle - angle, angle)
 
 
 def test_wheels(ev3):

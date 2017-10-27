@@ -52,19 +52,15 @@ class WheeledGyroRobotController(WheeledRobotController):
 
         self._gyro = self._robot.GyroSensor()
 
-    def run_closed_loop(self, executor: GyroProgramExecutor, pid_config: PIDControllerConfig,
-                        duration: float, delta=0.1, logger=None):
+    def run_closed_loop(self, executor: GyroProgramExecutor, pid_config: PIDControllerConfig, delta=0.1, logger=None):
         pid = PIDController(pid_config.kp, pid_config.ki, pid_config.kd)
         init_angle = self._gyro.angle
 
         curr_time = 0.0
-        target_angle = 0.0
-        while curr_time < duration:
-            if curr_time >= executor.command_time() and executor.has_next_command():
-                executor.next_command()
-
-            target_angle += executor.command_value()
-            curr_angle = self._gyro.angle - init_angle
+        target_angle = executor.command_value()
+        while True:
+            gyro_angle = self._gyro.angle
+            curr_angle = gyro_angle - init_angle
 
             if logger is not None:
                 logger.log(curr_time, curr_angle)
@@ -72,9 +68,16 @@ class WheeledGyroRobotController(WheeledRobotController):
             err = target_angle - curr_angle
             angle = pid.filter(err)
 
-            self.drive(math.radians(angle)/delta)
+            self.drive(-math.radians(angle)/delta)
             time.sleep(delta)
 
             curr_time += delta
+
+            if curr_time >= executor.command_time():
+                if not executor.has_next_command():
+                    break
+
+                executor.next_command()
+                target_angle += executor.command_value()
 
         self.stop()
