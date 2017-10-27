@@ -38,7 +38,7 @@ def main(argv):
 def usage():
     usage_str = """Stops current driving robot\n\n"""
     usage_str = usage_str + """Parameters:\n\n"""
-    usage_str = usage_str + "--"+K_CONFIG_PARAM+"config\t Path to the robot's yaml configuration file\n"
+    usage_str = usage_str + "--"+K_CONFIG_PARAM+"\t Path to the robot's yaml configuration file\n"
     return usage_str
 
 
