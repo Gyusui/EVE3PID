@@ -15,10 +15,6 @@ Install python requirements on your computer:
 
 ```pip install -r requirements.pip```
 
-Install yaml library on your computer:
-
-```sudo pip3 install pyyaml```
-
 # Usage
 
 Change robot's IP address, left and right motors' output ports in `resources/robot_config.yaml` to yours. Also check `wheelRadius` and `wheelBaseHalf` (mesuared in meters) in case you have special robot configuration.
